@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PaymentRequest Demo Store</title>
+    <link rel='shortcut icon' href='/android.ico' type='image/x-icon'/ >
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      button{
+        width: 100%;
+      }
+      pre{
+        width: 100%;
+        font-size: 10px;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+  <div class="container">
+
+    <h2><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/480px-Google_%22G%22_Logo.svg.png' style='height: 36px; width: 36px'>&nbsp;Pay with Google</h2> 
+
+    <p>Express checkout with Google Payment API</p>
+
+    <div class='paymentrequest'>
+      <button id="buyButton" class='btn btn-primary'>Express Checkout</button><br><br>
+      <pre id="result"></pre>
+    </div>
+
+  </div>
+
+  </body>
+
+  
+</html>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+
+document.getElementById("buyButton").addEventListener("click", onBuyClicked);
+
+function onBuyClicked() {
+
+  var supportedInstruments = [
+    {
+      supportedMethods: ['https://google.com/pay'],
+      data: {
+       "merchantName":"testApp Payment Request",
+       "merchantId":"02510116604241796260",
+       "apiVersion":1,
+       "paymentMethodTokenizationParameters":
+       {
+           "tokenizationType":"PAYMENT_GATEWAY",
+           "parameters":
+           {
+               "stripe:publishableKey":"pk_live_u4W1tkj5FEHBipLTfqrBYJyp",
+               "gateway":"stripe",
+               "stripe:version":"5"
+           }
+       },
+       "allowedPaymentMethods":["CARD","TOKENIZED_CARD"],
+       "cardRequirements":
+       {
+           "allowedCardNetworks":["AMEX","DISCOVER","MASTERCARD","VISA"],
+           "billingAddressRequired":true,
+           "billingAddressFormat":"FULL"
+       },
+       "phoneNumberRequired":true,
+       "emailRequired":true,
+       "shippingAddressRequired":true,
+       "uiRequired":false
+      }
+    }
+  ];
+
+  var details = {
+    total: {
+      label: 'Test Purchase (no charge)',
+      amount: { currency: 'USD', value : '1.00' }
+    }
+  };
+
+  var options = {
+    requestShipping: false,
+    requestPayerEmail: false,
+    requestPayerPhone: false,
+    requestPayerName: false
+  };
+
+  // Initialization
+  var request = new PaymentRequest(supportedInstruments, details, options);
+
+  request.show().then(function(response) {
+  // Process response
+    response.complete("success");
+    document.getElementById("result").innerHTML = "Success!<br>"+JSON.stringify(response.toJSON(), null, 2)
+  }).catch(function(err) {
+    document.getElementById("result").innerHTML = "Something went wrong!<br>"+JSON.stringify(err.toJSON(), null, 2);
+
+  });
+
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

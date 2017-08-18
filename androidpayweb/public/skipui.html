@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PaymentRequest Demo Store</title>
+    <link rel='shortcut icon' href='/android.ico' type='image/x-icon'/ >
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <div class="container">
+
+    <h2 id='title'>Checkout</h2> 
+
+    <div>
+      <button id="guestcheckout" class='btn btn-primary' style='width: 100%; background-color: #f7f7f7; border: 1px solid #ccc; padding: 8px; color: #333'>Guest Checkout</button><br>
+      <button id="buyButton" class='btn btn-primary' style='width: 100%; background-color: #f7f7f7; border: 1px solid #ccc; padding: 8px; color: #333; margin-top: 15px'><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/600px-Google_%22G%22_Logo.svg.png' style='width: 16px; height: 16px'> Pay with Google</button><br><br>
+      <pre id="result">
+     
+      </pre>
+    </div>
+
+  </div>
+
+  </body>
+</html>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+
+document.getElementById("buyButton").addEventListener("click", onBuyClicked);
+
+function onBuyClicked() {
+
+  var supportedInstruments = [
+    {
+      supportedMethods: ['https://google.com/pay'],
+      data: {
+       "merchantName":"testApp Payment Request",
+       "merchantId":"02510116604241796260",
+       "apiVersion":1,
+       "paymentMethodTokenizationParameters":
+       {
+           "tokenizationType":"PAYMENT_GATEWAY",
+           "parameters":
+           {
+               "stripe:publishableKey":"pk_live_u4W1tkj5FEHBipLTfqrBYJyp",
+               "gateway":"stripe",
+               "stripe:version":"5"
+           }
+       },
+       "allowedPaymentMethods":["CARD","TOKENIZED_CARD"],
+       "cardRequirements":
+       {
+           "allowedCardNetworks":["AMEX","DISCOVER","MASTERCARD","VISA"],
+           "billingAddressRequired":true,
+           "billingAddressFormat":"FULL"
+       },
+       "phoneNumberRequired":true,
+       "emailRequired":true,
+       "shippingAddressRequired":false,
+       "uiRequired":false
+      }
+    }
+  ];
+
+  var details = {
+    total: {
+      label: 'Test Purchase (no charge)',
+      amount: { currency: 'USD', value : '1.00' }
+    }
+  };
+
+  var options = {
+    requestShipping: false,
+    requestPayerEmail: false,
+    requestPayerPhone: false,
+    requestPayerName: false
+  };
+
+  // Initialization
+  var request = new PaymentRequest(supportedInstruments, details, options);
+
+  request.show().then(function(response) {
+  // Process response
+    response.complete("success");
+    document.getElementById("result").innerHTML = "Success!<br>"+JSON.stringify(response.toJSON()
+      , null, 2)
+    document.getElementById("guestcheckout").style.display = "none"
+    document.getElementById("buyButton").style.display = "none"
+    document.getElementById("title").innerHTML = "Order Successful"
+  }).catch(function(err) {
+    document.getElementById("result").innerHTML = "Something went wrong!<br>"+JSON.stringify(err.toJSON(), null, 2);
+
+  });
+
+}
+
+
+
+</script>
