@@ -20,8 +20,9 @@
   </head>
 
   <body>
+    <div id='buttonarea'>
       <button id="buyButton" class='btn btn-primary' style='width: 100%; background-color: #f7f7f7; border: 1px solid #ccc; padding: 8px; color: #333; margin-top: 15px'><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/600px-Google_%22G%22_Logo.svg.png' style='width: 16px; height: 16px'> Pay with Google</button>
-      <pre id="result" style='height: 200px'></pre>
+    </div>
   </body>
 </html>
 
@@ -37,12 +38,6 @@ document.getElementById("buyButton").addEventListener("click", onBuyClicked);
 function onBuyClicked() {
 
   var supportedInstruments = [
-    {
-      supportedMethods: ['basic-card'],
-      data: {
-        supportedNetworks: ['amex', 'discover', 'mastercard', 'visa']
-      }
-    },
     {
       supportedMethods: ['https://google.com/pay'],
       data: {
@@ -68,7 +63,7 @@ function onBuyClicked() {
        },
        "phoneNumberRequired":true,
        "emailRequired":true,
-       "shippingAddressRequired":false,
+       "shippingAddressRequired":true,
        "uiRequired":false
       }
     }
@@ -76,8 +71,8 @@ function onBuyClicked() {
 
   var details = {
     total: {
-      label: 'Test Purchase (no charge)',
-      amount: { currency: 'USD', value : '1.00' }
+      label: 'Robot Superman Shirt',
+      amount: { currency: 'USD', value : '14.95' }
     }
   };
 
@@ -94,8 +89,9 @@ function onBuyClicked() {
   request.show().then(function(response) {
   // Process response
     response.complete("success");
-    document.getElementById("result").innerHTML = "Success!<br>"+JSON.stringify(response.toJSON(), null, 2);
-    alert("Success!");
+    document.getElementById("buttonarea").innerHTML = "Boom!"
+    window.top.location.href = "https://androidpayiframe.firebaseapp.com/confirmation.html"; 
+
   }).catch(function(err) {
     document.getElementById("result").innerHTML = "Something went wrong!<br>"+JSON.stringify(err.toJSON(), null, 2);
 

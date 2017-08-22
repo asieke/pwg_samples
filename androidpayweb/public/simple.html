@@ -55,7 +55,13 @@ document.getElementById("buyButton").addEventListener("click", onBuyClicked);
 
 function onBuyClicked() {
 
-  var supportedInstruments = [
+  var supportedInstruments = [    
+    {
+      supportedMethods: ['basic-card'],
+      data: {
+        supportedNetworks: ['amex', 'discover', 'mastercard', 'visa']
+      }
+    },
     {
       supportedMethods: ['https://google.com/pay'],
       data: {

@@ -18,3 +18,7 @@ Shows how to call the Google Payment API from an iframe in order for the API to 
 
 Example of rendering the Pay with Google button on an AMP page
 
+### Index.html
+
+1:many platform integration
+

@@ -1,0 +1,25 @@
+[debug] [2017-08-22T21:18:08.001Z] ----------------------------------------------------------------------
+[debug] [2017-08-22T21:18:08.004Z] Command:      /usr/local/Cellar/node/8.1.4/bin/node /usr/local/bin/firebase deploy
+[debug] [2017-08-22T21:18:08.004Z] CLI Version:  3.9.1
+[debug] [2017-08-22T21:18:08.004Z] Platform:     darwin
+[debug] [2017-08-22T21:18:08.004Z] Node Version: v8.1.4
+[debug] [2017-08-22T21:18:08.005Z] Time:         Tue Aug 22 2017 14:18:08 GMT-0700 (PDT)
+[debug] [2017-08-22T21:18:08.005Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-08-22T21:18:08.020Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-08-22T21:18:08.020Z] > authorizing via signed-in user
+[debug] [2017-08-22T21:18:08.023Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/androidpayiframe  
+ Tue Aug 22 2017 14:18:08 GMT-0700 (PDT)
+[debug] [2017-08-22T21:18:08.500Z] <<< HTTP RESPONSE 200
+[debug] [2017-08-22T21:18:08.501Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/androidpayiframe/tokens  
+ Tue Aug 22 2017 14:18:08 GMT-0700 (PDT)
+[debug] [2017-08-22T21:18:09.056Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'androidpayiframe'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing public directory for upload...
+[debug] [2017-08-22T21:18:09.794Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/androidpayiframe/uploads/-KsAnp2bJM9pBM2HxMfb?fileCount=5&message=  
+ Tue Aug 22 2017 14:18:09 GMT-0700 (PDT)
+[debug] [2017-08-22T21:18:11.477Z] <<< HTTP RESPONSE 200
+[debug] [2017-08-22T21:18:11.477Z] [hosting] .tgz uploaded successfully, waiting for extraction
