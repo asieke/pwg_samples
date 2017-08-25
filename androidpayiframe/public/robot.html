@@ -47,7 +47,6 @@ p.price {
 }
 
 .item-info {
-  margin-top: 32px;
   text-align: justify;
 }
 
@@ -56,7 +55,6 @@ p.price {
 }
 
 .payment-button {
-  margin-top: 32px;
   text-align: center;
 }
 
@@ -73,11 +71,34 @@ h1.title {
   position: relative;
   z-index: 100;
 }
+
+.addtocard{
+  width: 300px;
+  height: 50px;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+  font-size: 18px;
+  color: #666;
+  font-weight: 200;
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+}
+
+.iframebutton{
+  padding: 0px; 
+  margin: 0px; 
+  width: 100%;
+  height: 80px;
+  border: 0px;
+  display: block;
+}
+
   </style>
 
 </head>
 <body>
-  <h1 class="title">Google Store</h1>
+  <h1 class="title">ACME, Inc.</h1>
   <div class="container" style='margin: 0px; padding: 10px 0px 0px 0px'>
   	<div class="description-box" style='margin: 0px; padding: 0px'>
       <div class="item-info" style='margin: 0px; padding: 0px; text-align: center'>
@@ -90,12 +111,14 @@ h1.title {
            width="200" height="200" style='margin: -10px 0px 0px 0px; padding: 0px'>
       </amp-img>
     </div>
-    <div class="payment-button" style='padding: 0px; margin: 0px'>
-        <amp-iframe width="180" height="60"
+    <div class="payment-button" style='padding: 0px; margin: 0px; width: 100%;'>
+        <iframe width="100%"
+          class='iframebutton'
           allowpaymentrequest
           frameborder="0"
           src="https://androidpayweb.firebaseapp.com/iframe.html">
-        </amp-iframe>
+        </iframe>
+      <button class='addtocard'>Add to cart</button>
       </div>
     <div class="description-box">
       <div class="item-info">

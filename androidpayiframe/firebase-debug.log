@@ -1,25 +1,23 @@
-[debug] [2017-08-22T21:18:08.001Z] ----------------------------------------------------------------------
-[debug] [2017-08-22T21:18:08.004Z] Command:      /usr/local/Cellar/node/8.1.4/bin/node /usr/local/bin/firebase deploy
-[debug] [2017-08-22T21:18:08.004Z] CLI Version:  3.9.1
-[debug] [2017-08-22T21:18:08.004Z] Platform:     darwin
-[debug] [2017-08-22T21:18:08.004Z] Node Version: v8.1.4
-[debug] [2017-08-22T21:18:08.005Z] Time:         Tue Aug 22 2017 14:18:08 GMT-0700 (PDT)
-[debug] [2017-08-22T21:18:08.005Z] ----------------------------------------------------------------------
+[debug] [2017-08-25T18:42:54.727Z] ----------------------------------------------------------------------
+[debug] [2017-08-25T18:42:54.729Z] Command:      /usr/local/Cellar/node/8.1.4/bin/node /usr/local/bin/firebase deploy
+[debug] [2017-08-25T18:42:54.729Z] CLI Version:  3.9.1
+[debug] [2017-08-25T18:42:54.729Z] Platform:     darwin
+[debug] [2017-08-25T18:42:54.729Z] Node Version: v8.1.4
+[debug] [2017-08-25T18:42:54.730Z] Time:         Fri Aug 25 2017 11:42:54 GMT-0700 (PDT)
+[debug] [2017-08-25T18:42:54.730Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2017-08-22T21:18:08.020Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2017-08-22T21:18:08.020Z] > authorizing via signed-in user
-[debug] [2017-08-22T21:18:08.023Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/androidpayiframe  
- Tue Aug 22 2017 14:18:08 GMT-0700 (PDT)
-[debug] [2017-08-22T21:18:08.500Z] <<< HTTP RESPONSE 200
-[debug] [2017-08-22T21:18:08.501Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/androidpayiframe/tokens  
- Tue Aug 22 2017 14:18:08 GMT-0700 (PDT)
-[debug] [2017-08-22T21:18:09.056Z] <<< HTTP RESPONSE 200
-[info] 
-[info] === Deploying to 'androidpayiframe'...
-[info] 
-[info] i  deploying hosting
-[info] i  hosting: preparing public directory for upload...
-[debug] [2017-08-22T21:18:09.794Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/androidpayiframe/uploads/-KsAnp2bJM9pBM2HxMfb?fileCount=5&message=  
- Tue Aug 22 2017 14:18:09 GMT-0700 (PDT)
-[debug] [2017-08-22T21:18:11.477Z] <<< HTTP RESPONSE 200
-[debug] [2017-08-22T21:18:11.477Z] [hosting] .tgz uploaded successfully, waiting for extraction
+[debug] [2017-08-25T18:42:54.744Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-08-25T18:42:54.745Z] > authorizing via signed-in user
+[debug] [2017-08-25T18:42:54.748Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-08-25T18:42:54.748Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/qsYklYOBwW7HqYMyUDnYAAp3tAOnzM8T5QOC9C9kmu4',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Fri Aug 25 2017 11:42:54 GMT-0700 (PDT)
+[debug] [2017-08-25T18:42:55.349Z] <<< HTTP RESPONSE 200
+[debug] [2017-08-25T18:42:55.369Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/androidpayiframe  
+ Fri Aug 25 2017 11:42:55 GMT-0700 (PDT)
+[debug] [2017-08-25T18:42:55.816Z] <<< HTTP RESPONSE 200
+[debug] [2017-08-25T18:42:55.817Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/androidpayiframe/tokens  
+ Fri Aug 25 2017 11:42:55 GMT-0700 (PDT)

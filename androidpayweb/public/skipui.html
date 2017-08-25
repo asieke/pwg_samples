@@ -32,8 +32,10 @@
 
     <p>Express checkout with Google Payment API</p>
 
-    <div class='paymentrequest'>
-      <button id="buyButton" class='btn btn-primary' style='width: 100%; background-color: #f7f7f7; border: 1px solid #ccc; padding: 8px; color: #333; margin-top: 15px'><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/600px-Google_%22G%22_Logo.svg.png' style='width: 16px; height: 16px'> Pay with Google</button><br><br>
+    <div class='paymentrequest' style='text-align: center; margin-top: 20px'>
+      <button id='buyButton' style='width: 250px; border: 0px; margin: 0px; padding: 0px; background-color: #fff'>
+        <img src='https://s3-us-west-2.amazonaws.com/androidpayweb/01a-PwG-button-stroke%2Bshadow.png' style='width: 250px; margin: 0px; border: 0px'>
+      </button><br><br>
       <pre id="result"></pre>
     </div>
 
@@ -52,9 +54,9 @@
 <script>
 
 document.getElementById("buyButton").addEventListener("click", onBuyClicked);
+var request;
 
-function onBuyClicked() {
-
+window.onload = function() {
   var supportedInstruments = [
     {
       supportedMethods: ['https://google.com/pay'],
@@ -102,7 +104,11 @@ function onBuyClicked() {
   };
 
   // Initialization
-  var request = new PaymentRequest(supportedInstruments, details, options);
+  request = new PaymentRequest(supportedInstruments, details, options); 
+}
+
+
+function onBuyClicked() {
 
   request.show().then(function(response) {
   // Process response
