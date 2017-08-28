@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>PaymentRequest Demo Store</title>
+    <title>PwG - Button</title>
     <link rel='shortcut icon' href='/android.ico' type='image/x-icon'/ >
 
     <!-- Bootstrap -->
@@ -18,7 +18,17 @@
       pre{
         width: 100%;
         font-size: 10px;
+        text-align: left;
       }
+
+      #buyButton{
+        width: 250px; 
+        border: 0px; 
+        margin: 0px; 
+        padding: 0px; 
+        background-color: #fff
+      }
+
 
     </style>
 
@@ -30,10 +40,15 @@
 
     <h2><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/480px-Google_%22G%22_Logo.svg.png' style='height: 36px; width: 36px'>&nbsp;Pay with Google</h2> 
 
-    <p>Express checkout with Google Payment API</p>
+    <ul>
+      <li>Single Payment Method: Google Payment API</li>
+      <li>Button takes user directly to Google Payment Chooser</li>
+      <li>Returns DIRECT payload from Google</li>
+
+    </ul> 
 
     <div class='paymentrequest' style='text-align: center; margin-top: 20px'>
-      <button id='buyButton' style='width: 250px; border: 0px; margin: 0px; padding: 0px; background-color: #fff'>
+      <button id='buyButton' >
         <img src='https://s3-us-west-2.amazonaws.com/androidpayweb/01a-PwG-button-stroke%2Bshadow.png' style='width: 250px; margin: 0px; border: 0px'>
       </button><br><br>
       <pre id="result"></pre>
@@ -63,15 +78,14 @@ window.onload = function() {
       data: {
        "merchantName":"testApp Payment Request",
        "merchantId":"02510116604241796260",
+       "environment":"TEST",
        "apiVersion":1,
        "paymentMethodTokenizationParameters":
        {
-           "tokenizationType":"PAYMENT_GATEWAY",
+           "tokenizationType":"DIRECT",
            "parameters":
            {
-               "stripe:publishableKey":"pk_live_u4W1tkj5FEHBipLTfqrBYJyp",
-               "gateway":"stripe",
-               "stripe:version":"5"
+              "publicKey":"BC9u7amr4kFD8qsdxnEfWV7RPDR9v4gLLkx3jfyaGOvxBoEuLZKE0Tt5O/2jMMxJ9axHpAZD2Jhi4E74nqxr944="
            }
        },
        "allowedPaymentMethods":["CARD","TOKENIZED_CARD"],
@@ -79,19 +93,19 @@ window.onload = function() {
        {
            "allowedCardNetworks":["AMEX","DISCOVER","MASTERCARD","VISA"],
            "billingAddressRequired":true,
-           "billingAddressFormat":"FULL"
+           "billingAddressFormat":"MIN"
        },
-       "phoneNumberRequired":true,
+       "phoneNumberRequired":false,
        "emailRequired":true,
        "shippingAddressRequired":true,
-       "uiRequired":false
+       "uiRequired":true
       }
     }
   ];
 
   var details = {
     total: {
-      label: 'Test Purchase (no charge)',
+      label: 'Test Purchase',
       amount: { currency: 'USD', value : '1.00' }
     }
   };
