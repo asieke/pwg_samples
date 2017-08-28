@@ -40,9 +40,9 @@ hosted on androidpayweb.firebaseapp.com
 hosted on androidpayiframe.firebaseapp.com
 
 
-### submerchant.html [Demo](https://androidpayiframe.firebaseapp.com/submerchant.html)
+### Platform.html [Demo](https://androidpayiframe.firebaseapp.com/submerchant.html)
 
-* Shows how a platform can use a hosted iframe to call the Google Payment API from multiple domains
+* Shows how a 1:many platform can use a hosted iframe to call the Google Payment API from multiple domains
 * Calls iframe.html (above) which returns a gateway tokenized form of payment from the user's Google Account
 
 ### AMP.html [Demo](https://androidpayiframe.firebaseapp.com/amp.html)
