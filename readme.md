@@ -2,15 +2,21 @@
 
 The following examples show how to use the Google Payment API with PaymentRequest.
 
-## Androidpayweb
+## pwg-main
 
-### Simple.html
+Main Pay with Google reference implementations on a whitelisted domain
+
+#### Simple.html
+
+[working demo] (https://androidpayweb.firebaseapp.com/simple.html)
 
 Implement an express checkout with the Google Payment API.  Accept cards & tokens from Google and cards stored locally in Chrome.
 
 
 
-## Androidpayiframe
+## pwg-iframe
+
+Implement Pay with Google from a non-whitelisted domain using iframes
 
 Shows how to call the Google Payment API from an iframe in order for the API to work across multiple domains
 
