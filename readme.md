@@ -1,22 +1,17 @@
+# Google Payment API Reference
 
-### Getting Started
+#### Getting Started
 * Android Phone w/ [Android Pay](https://play.google.com/store/apps/details?id=com.google.android.apps.walletnfcrel) set up
 * Make sure you have 11.4+ of [Google Play Services](https://play.google.com/store/apps/details?id=com.google.android.gms&hl=en)
 * [Chrome M61](https://play.google.com/store/apps/details?id=com.chrome.beta) for Android
 
-# Pay with Google Sampples
 The following examples show how to use the Google Payment API with PaymentRequest.
 
+# Sample Implementations
 
-## pwg-main
+### pwg-main > simple.html [Demo](https://androidpayweb.firebaseapp.com/simple.html)
 
-Main Pay with Google reference implementations on a whitelisted domain
-
-#### Simple.html
-
-[Demo](https://androidpayweb.firebaseapp.com/simple.html)
-
-Implement an express checkout with the Google Payment API.  Accept cards & tokens from Google and cards stored locally in Chrome.
+Sample checkout page with an express checkout button that uses PaymentRequest to get Google credentials from the Google Payment API and credit/debit cards from the browser.
 
 
 ## pwg-iframe
