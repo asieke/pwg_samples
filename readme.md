@@ -8,10 +8,9 @@ Main Pay with Google reference implementations on a whitelisted domain
 
 #### Simple.html
 
-[working demo] (https://androidpayweb.firebaseapp.com/simple.html)
+(https://androidpayweb.firebaseapp.com/simple.html "Working Demo")
 
 Implement an express checkout with the Google Payment API.  Accept cards & tokens from Google and cards stored locally in Chrome.
-
 
 
 ## pwg-iframe
