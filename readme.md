@@ -1,11 +1,12 @@
-# Pay with Google Web Samples
 
-The following examples show how to use the Google Payment API with PaymentRequest.
-
-## Prerequisites
+### Getting Started
 * Android Phone w/ [Android Pay](https://play.google.com/store/apps/details?id=com.google.android.apps.walletnfcrel) set up
 * Make sure you have 11.4+ of [Google Play Services](https://play.google.com/store/apps/details?id=com.google.android.gms&hl=en)
 * [Chrome M61](https://play.google.com/store/apps/details?id=com.chrome.beta) for Android
+
+# Pay with Google Sampples
+The following examples show how to use the Google Payment API with PaymentRequest.
+
 
 ## pwg-main
 
