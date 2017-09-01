@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PwG - Button</title>
+    <link rel='shortcut icon' href='/android.ico' type='image/x-icon'/ >
+
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      button{
+        width: 100%;
+      }
+      pre{
+        width: 100%;
+        font-size: 10px;
+        text-align: left;
+      }
+
+      #buyButton{
+        width: 250px; 
+        border: 0px; 
+        margin: 0px; 
+        padding: 0px; 
+        background-color: #fff
+      }
+
+
+    </style>
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+  </head>
+
+  <body>
+
+  <div class="container">
+
+    <h2><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/480px-Google_%22G%22_Logo.svg.png' style='height: 36px; width: 36px'>&nbsp;Pay with Google</h2> 
+
+    <ul>
+      <li>Stripe - Pay with Google; runs a production $0.50 charge</li>
+      <li>Dump token to console</li>
+    </ul> 
+
+    <div class='paymentrequest' style='text-align: center; margin-top: 20px'>
+      <button id='buyButton' >
+        <img src='https://s3-us-west-2.amazonaws.com/androidpayweb/01a-PwG-button-stroke%2Bshadow.png' style='width: 250px; margin: 0px; border: 0px'>
+      </button><br><br>
+      <pre id="result"></pre>
+    </div>
+
+  </div>
+
+  </body>
+
+  
+</html>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+
+document.getElementById("buyButton").addEventListener("click", onBuyClicked);
+var request;
+var stripe_key = "pk_live_mXD8hxxTkAAzkMScye7zh8s8"
+
+window.onload = function() {
+  var supportedInstruments = [
+    {
+      supportedMethods: ['https://google.com/pay'],
+      data: {
+       "merchantName":"testApp Payment Request",
+       "merchantId":"02510116604241796260",
+       "apiVersion":1,
+       "paymentMethodTokenizationParameters":
+       {
+           "tokenizationType":"PAYMENT_GATEWAY",
+           "parameters":
+           {
+               "stripe:publishableKey":stripe_key,
+               "gateway":"stripe",
+               "stripe:version":"5"
+           }
+       },
+       "allowedPaymentMethods":["CARD","TOKENIZED_CARD"],
+       "cardRequirements":
+       {
+           "allowedCardNetworks":["AMEX","DISCOVER","MASTERCARD","VISA"],
+           "billingAddressRequired":true,
+           "billingAddressFormat":"MIN"
+       },
+       "phoneNumberRequired":true,
+       "emailRequired":true,
+       "shippingAddressRequired":true,
+       "uiRequired":false
+      }
+    }
+  ];
+
+  var details = {
+    total: {
+      label: 'Test Purchase',
+      amount: { currency: 'USD', value : '1.00' }
+    }
+  };
+
+  var options = {
+    requestShipping: false,
+    requestPayerEmail: false,
+    requestPayerPhone: false,
+    requestPayerName: false
+  };
+
+  // Initialization
+  request = new PaymentRequest(supportedInstruments, details, options); 
+}
+
+
+function onBuyClicked() {
+
+  request.show().then(function(response) {
+  // Process response
+
+    //send a $.50 test charge to stripe
+
+    var stripe = Stripe(stripe_key);
+    var token = JSON.parse(response.details.paymentMethodToken.token)
+
+
+    
+
+    stripe.charges.create({
+      amount: 50,
+      currency: 'usd',
+      source: token.id,
+      description: 'Pay with Google demo',
+      capture: false,
+    }, function(err, charge) {
+      if (err) {
+        document.getElementById("result").innerHTML = "Stripe: Payment Failed your card has <b>not</b> been charged"
+      } else {
+        document.getElementById("result").innerHTML = "Stripe: Payment Authorized your card has been charged 50c"
+      }
+    });
+
+    document.getElementById("result").innerHTML += "<br>---------<br>Success!<br>"+JSON.stringify(response.toJSON(), null, 2)
+
+    response.complete("success");
+
+
+
+  }).catch(function(err) {
+    document.getElementById("result").innerHTML = "Something went wrong!<br>"+JSON.stringify(err.toJSON(), null, 2);
+
+  });
+
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
